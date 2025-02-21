@@ -1,20 +1,12 @@
-# UBER Backend
+# UBER Backend - User Registration API
 
-## User Registration API
+## Overview
+This API allows users to register for the Uber clone application by providing their personal details. The system validates the input data and returns a JSON Web Token (JWT) upon successful registration.
 
-## Endpoint: `/users/register`
+## Endpoint
+**`POST /users/register`**
 
-### Description:
-This endpoint allows users to register by providing necessary details such as first name, last name, email, and password. The API validates the input data and returns a JSON Web Token (JWT) upon successful registration.
-
----
-
-## HTTP Method:
-**POST**
-
----
-
-## Request Body:
+## Request Body
 The request body should be in JSON format with the following required fields:
 
 | Field      | Type   | Required | Description                          |
@@ -32,13 +24,14 @@ The request body should be in JSON format with the following required fields:
   "email": "john.doe@example.com",
   "password": "securepassword"
 }
+```
 
-## User Registration API Responses
+## Responses
 
-## ✅ 201 Created - Success
-When the user is successfully registered, a JWT token is returned.
+### ✅ 201 Created - Success
+Returns a JWT token upon successful registration.
 
-### Response Example:
+#### Example Response:
 ```json
 {
   "msg": "User is successfully registered",
@@ -54,31 +47,25 @@ When the user is successfully registered, a JWT token is returned.
 }
 ```
 
----
-
-## ❌ 400 Bad Request - Missing Required Fields
-If `firstname`, `email`, or `password` is missing in the request.
-
-### Response Example:
+### ❌ 400 Bad Request - Missing Required Fields
+Occurs if required fields are missing.
+#### Example Response:
 ```json
 {
-  "msg": "All fields are required"
+  "msg": "All required fields must be provided"
 }
 ```
 
----
-
-## ❌ 400 Bad Request - Validation Error
-If input data does not meet validation rules (e.g., invalid email, short password, etc.).
-
-### Response Example:
+### ❌ 400 Bad Request - Validation Error
+Occurs when input data does not meet validation rules.
+#### Example Response:
 ```json
 {
   "msg": "Please enter valid input data",
   "errors": [
     {
       "path": "firstname",
-      "message": "Name is required"
+      "message": "First name must be at least 3 characters"
     },
     {
       "path": "password",
@@ -88,34 +75,25 @@ If input data does not meet validation rules (e.g., invalid email, short passwor
 }
 ```
 
----
-
-## ❌ 409 Conflict - Email Already Registered
-If the provided email is already in use.
-
-### Response Example:
+### ❌ 409 Conflict - Email Already Registered
+Occurs when the email is already in use.
+#### Example Response:
 ```json
 {
   "msg": "Email is already registered"
 }
 ```
 
----
-
-## ❌ 500 Internal Server Error
-If something unexpected happens on the server.
-
-### Response Example:
+### ❌ 500 Internal Server Error
+Occurs when an unexpected error happens on the server.
+#### Example Response:
 ```json
 {
   "msg": "Something went wrong. Please try again later."
 }
 ```
 
----
-
-## Notes:
+## Notes
 - The password is securely hashed before storing.
-- The token is required for authentication in subsequent API requests.
+- A JWT token is required for authentication in subsequent API requests.
 - Ensure that the request body follows the required format.
-
