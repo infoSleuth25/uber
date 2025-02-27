@@ -69,3 +69,73 @@ The request body should be in JSON format with the following required fields:
   - `password` : User's password (minimum 6 characters)
 - `token` (string) : JWT Token 
 
+
+### Endpoint
+**`GET /users/profile`**
+
+### Overview
+This API allows authenticated users to retrieve their profile details. The request must include a valid JWT token in either the Authorization header or cookies.
+
+### Authentication Methods
+The JWT token can be provided in one of the following ways:
+1> Authorization Header
+`Authorization: Bearer <your-jwt-token>`
+2> Cookies
+- The token must be stored in the token cookie.
+
+#### Example Request:
+```
+GET /users/profile HTTP/1.1  
+Host: example.com  
+Authorization: Bearer <your-jwt-token>  
+```
+OR
+```
+GET /users/profile HTTP/1.1  
+Host: example.com  
+Cookie: token=<your-jwt-token>
+```
+
+### Responses
+
+- `user` (object):
+  - `fullname` (object):
+    - `firstname` (string) : User's first name (minimum 3 characters)
+    - `lastname` (string) : User's last name (minimum 3 characters)
+  - `email` (string) : User's email (must be valid)
+  - `password` : User's password (minimum 6 characters)
+
+### Endpoint
+**`GET /users/logout`**
+
+### Overview
+This API allows users to log out from the Uber clone application by invalidating their JWT token. The token is added to a blacklist to prevent further use. The token can be obtained from either the Authorization header or cookies.
+
+### Authentication Methods
+The JWT token can be provided in one of the following ways:
+1> Authorization Header
+`Authorization: Bearer <your-jwt-token>`
+2> Cookies
+- The token must be stored in the token cookie.
+
+#### Example Request:
+```
+GET /users/logout HTTP/1.1  
+Host: example.com  
+Authorization: Bearer <your-jwt-token>  
+```
+OR
+```
+GET /users/logout HTTP/1.1  
+Host: example.com  
+Cookie: token=<your-jwt-token>
+```
+
+### Responses
+
+```
+{
+  "msg": "Logged out"
+}
+```
+
