@@ -78,10 +78,10 @@ This API allows authenticated users to retrieve their profile details. The reque
 
 ### Authentication Methods
 The JWT token can be provided in one of the following ways:
-1> Authorization Header
+- Authorization Header
 `Authorization: Bearer <your-jwt-token>`
-2> Cookies
-- The token must be stored in the token cookie.
+- Cookies
+  - The token must be stored in the token cookie.
 
 #### Example Request:
 ```
@@ -113,10 +113,10 @@ This API allows users to log out from the Uber clone application by invalidating
 
 ### Authentication Methods
 The JWT token can be provided in one of the following ways:
-1> Authorization Header
+- Authorization Header
 `Authorization: Bearer <your-jwt-token>`
-2> Cookies
-- The token must be stored in the token cookie.
+- Cookies
+  - The token must be stored in the token cookie.
 
 #### Example Request:
 ```
