@@ -1,10 +1,10 @@
 # UBER Backend - User Registration API
 
-## Overview
-This API allows users to register for the Uber clone application by providing their personal details. The system validates the input data and returns a JSON Web Token (JWT) upon successful registration.
-
 ## Endpoint
 **`POST /users/register`**
+
+## Overview
+This API allows users to register for the Uber clone application by providing their personal details. The system validates the input data and returns a JSON Web Token (JWT) upon successful registration.
 
 ## Request Body
 The request body should be in JSON format with the following required fields:
@@ -28,72 +28,10 @@ The request body should be in JSON format with the following required fields:
 
 ## Responses
 
-### ✅ 201 Created - Success
-Returns a JWT token upon successful registration.
-
-#### Example Response:
-```json
-{
-  "msg": "User is successfully registered",
-  "user": {
-    "_id": "65a123abc123abc123abc123",
-    "fullname": {
-      "firstname": "John",
-      "lastname": "Doe"
-    },
-    "email": "john.doe@example.com"
-  },
-  "token": "your_jwt_token_here"
-}
-```
-
-### ❌ 400 Bad Request - Missing Required Fields
-Occurs if required fields are missing.
-#### Example Response:
-```json
-{
-  "msg": "All required fields must be provided"
-}
-```
-
-### ❌ 400 Bad Request - Validation Error
-Occurs when input data does not meet validation rules.
-#### Example Response:
-```json
-{
-  "msg": "Please enter valid input data",
-  "errors": [
-    {
-      "path": "firstname",
-      "message": "First name must be at least 3 characters"
-    },
-    {
-      "path": "password",
-      "message": "Password must be at least 6 characters"
-    }
-  ]
-}
-```
-
-### ❌ 409 Conflict - Email Already Registered
-Occurs when the email is already in use.
-#### Example Response:
-```json
-{
-  "msg": "Email is already registered"
-}
-```
-
-### ❌ 500 Internal Server Error
-Occurs when an unexpected error happens on the server.
-#### Example Response:
-```json
-{
-  "msg": "Something went wrong. Please try again later."
-}
-```
-
-## Notes
-- The password is securely hashed before storing.
-- A JWT token is required for authentication in subsequent API requests.
-- Ensure that the request body follows the required format.
+- `user` (object):
+  - `fullname` (object):
+    - `firstname` (string) : User's first name (minimum 3 characters)
+    - `lastname` (string) : User's last name (minimum 3 characters)
+  - `email` (string) : User's email (must be valid)
+  - `password` : User's password (minimum 6 characters)
+- `token` (string) : JWT Token 
