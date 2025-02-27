@@ -1,12 +1,12 @@
 # UBER Backend - User Registration API
 
-## Endpoint
+### Endpoint
 **`POST /users/register`**
 
-## Overview
+### Overview
 This API allows users to register for the Uber clone application by providing their personal details. The system validates the input data and returns a JSON Web Token (JWT) upon successful registration.
 
-## Request Body
+### Request Body
 The request body should be in JSON format with the following required fields:
 
 | Field      | Type   | Required | Description                          |
@@ -16,7 +16,7 @@ The request body should be in JSON format with the following required fields:
 | email      | String | Yes      | User's email (must be valid)       |
 | password   | String | Yes      | Password (min 6 characters)        |
 
-### Example Request:
+#### Example Request:
 ```json
 {
   "firstname": "John",
@@ -26,7 +26,7 @@ The request body should be in JSON format with the following required fields:
 }
 ```
 
-## Responses
+### Responses
 
 - `user` (object):
   - `fullname` (object):
