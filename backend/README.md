@@ -1,5 +1,7 @@
 # UBER Backend - User Registration API
 
+## User
+
 ### Endpoint
 **`POST /users/register`**
 
@@ -138,3 +140,57 @@ Cookie: token=<your-jwt-token>
 }
 ```
 
+## Captain
+
+### Endpoint
+**`POST /captains/register`**
+
+### Overview
+This API allows Captains to register for the Uber clone application by providing their personal details. The system validates the input data and returns a JSON Web Token (JWT) upon successful registration.
+
+### Request Body
+The request body should be in JSON format with the following required fields:
+
+| Field        | Type   | Required | Description                                      |
+|-------------|--------|----------|--------------------------------------------------|
+| firstname   | String | Yes      | Captains's first name (min 3 chars)                 |
+| lastname    | String | No       | Captains's last name (optional, min 3 chars)        |
+| email       | String | Yes      | Captains's email (must be valid)                    |
+| password    | String | Yes      | Password (min 6 characters)                     |
+| vehicle     | Object | Yes      | Vehicle details                                 |
+| ├─ color    | String | Yes      | Vehicle color (min 3 chars)                     |
+| ├─ plate    | String | Yes      | Vehicle plate number (min 3 chars)              |
+| ├─ capacity | Number | Yes      | Passenger capacity (min 1)                      |
+| ├─ vehicleType | Enum  | Yes      | Type of vehicle ('car', 'motorcycle', 'auto')   |
+
+#### Example Request:
+```json
+{
+    "firstname" : "Shreeram",
+    "lastname" : "Borse",
+    "email" : "shreeramborse@gmail.com",
+    "password" : "shreeram@858",
+    "vehicle" : {
+        "color" : "white",
+        "plate" : "MH15SB9882",
+        "capacity" : 4,
+        "vehicleType" : "car"
+    }
+}
+```
+
+### Responses
+
+- `captain` (object):
+  - `fullname` (object):
+    - `firstname` (string) : Captain's first name (minimum 3 characters)
+    - `lastname` (string) : Captain's last name (minimum 3 characters)
+  - `email` (string) : Captain's email (must be valid)
+  - `password` (string) : Captain's password (minimum 6 characters)
+  - `status` (string) : inactive
+  - `vehicle` (object):
+    - `color` (string) : Vehicle color (minimum 3 characters)
+    - `plate` (string) : Vehicle plate number (minimum 3 characters)
+    - `capacity` (number) : Passenger capacity (minimum 1)
+    - `vehicleType` (enum) : Type of vehicle (`car`, `motorcycle`, `auto`)
+- `token` (string) : JWT Token 
