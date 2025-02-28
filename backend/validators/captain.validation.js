@@ -14,4 +14,9 @@ const CaptainValidationSchema = z.object({
     }),
 });
 
-module.exports = {CaptainValidationSchema};
+const CaptainLoginSchema = z.object({
+    email: z.string().email("Invalid email"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+module.exports = {CaptainValidationSchema, CaptainLoginSchema};
