@@ -103,7 +103,6 @@ Cookie: token=<your-jwt-token>
     - `firstname` (string) : User's first name (minimum 3 characters)
     - `lastname` (string) : User's last name (minimum 3 characters)
   - `email` (string) : User's email (must be valid)
-  - `password` : User's password (minimum 6 characters)
 
 ### Endpoint
 **`GET /users/logout`**

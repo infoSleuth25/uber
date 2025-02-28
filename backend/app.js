@@ -9,7 +9,7 @@ const userRoutes = require('./routes/user.route');
 connectToDb();
 
 
-app.use(express.urlencoded({extended : false}))
+app.use(express.urlencoded({extended : false}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
