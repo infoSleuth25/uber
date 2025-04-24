@@ -123,7 +123,8 @@ The JWT token can be provided in one of the following ways:
 ```
 GET /users/logout HTTP/1.1  
 Host: example.com  
-Authorization: Bearer <your-jwt-token>  
+Authorization: Bearer <your-jwt-token> 
+This is the token  
 ```
 OR
 ```
